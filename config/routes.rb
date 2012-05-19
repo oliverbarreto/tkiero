@@ -1,4 +1,6 @@
 Tkiero::Application.routes.draw do
+  get "users/new"
+
   #User SingUp Controller
   get "signup" => "users#new", :as => "signup"
   resources :users

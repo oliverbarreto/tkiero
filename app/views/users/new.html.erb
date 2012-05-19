@@ -1,0 +1,60 @@
+<!-- Sign Up page -->
+<% provide(:title, 'Sign Up') %>
+
+
+<div class="center hero-unit">
+	<!-- Sign Up Form -->
+	<h2>tKiero App - Sign Up</h2>
+	<p>
+		Please fill in the form with to create a new account for tKiero App
+		<br />
+		tKiero App is one of current Build One IDeas Lab projects
+	</p><br />
+
+	<%= form_for @user do |f| %>
+		<!-- Displays errors of the form, if any on -->
+		<% if @user.errors.any? %>
+			<div class="alert alert-error pull-left">
+				<button class="close" data-dismiss="alert">×</button>		    		
+				<p>You have entered invalid data on the form</p>
+				<ul>
+					<% for message in @user.errors.full_messages %>
+						<li>	<%= message %></li>
+					<% end %>
+				</ul>
+			</div>
+		<% end %>
+		
+		<br />
+		<div class="row">
+  			<div class="span6">
+				<p>
+					<%= f.label :name %>
+					<%= f.text_field :name, :placeholder => "name", autofocus:"true" %>
+				</p>
+				<p>
+					<%= f.label :email %>
+					<%= f.text_field :email, :placeholder => "eMail"  %>
+				</p>
+				<p>
+					<%= f.label :password %>
+					<%= f.password_field :password, :placeholder =>'password' %>
+				</p>
+				<p>
+					<%= f.label :password_confirmation %>
+					<%= f.password_field :password_confirmation, :placeholder =>'confirm password'%>
+				</p>
+				<br />
+				<p><%= f.submit "Create your account...", class:"btn btn-large btn-success" %></p>
+			</div>
+			<div class="span4">
+				<img src="http://placehold.it/350x330" alt="attention catching logo goes here">
+			</div>
+		</div>
+	<% end %>
+	<br />			
+	<p>...ot if you already have an account, login here</p>
+	<%= link_to "Log In here", login_path, class: "btn btn-large btn-success" %>
+
+</div>
+    
