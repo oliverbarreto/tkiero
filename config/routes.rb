@@ -1,4 +1,28 @@
 Tkiero::Application.routes.draw do
+  #User SingUp Controller
+  get "signup" => "users#new", :as => "signup"
+  resources :users
+
+  #User Login & Logout Controller  
+  get "login" => "sessions#new", :as => "login"
+  get "logout" => "sessions#destroy", :as => "logout"
+  resources :sessions
+
+  # Routes made for Static Pages of the App with URI Changed to be more specific without 'static_pages'
+  root to: 'static_pages#home'
+
+  # Initial Routes made for Static Pages of the App
+  #get "static_pages/home"
+  #get "static_pages/help"
+  #get "static_pages/about"
+  #get "static_pages/contact"
+
+  #Static Pages
+  match '/help',    to: 'static_pages#help'
+  match '/about',   to: 'static_pages#about'
+  match '/contact', to: 'static_pages#contact'
+  
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -46,9 +70,6 @@ Tkiero::Application.routes.draw do
   #     resources :products
   #   end
 
-  # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
 
   # See how all your routes lay out with "rake routes"
 
