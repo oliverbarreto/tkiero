@@ -8,9 +8,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save 
-      redirect_to root_url, :notice => "Signup !!!"
+      flash[:success] = "Welcome to tKiero App !!!"
+      redirect_to @user
+      #redirect_to root_url, :notice => "Signup !!!"
     else
-      render "new"
+      render 'new'
     end
   end
   
