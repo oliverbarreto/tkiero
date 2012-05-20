@@ -4,8 +4,8 @@ gem 'rails', '3.2.3'
 gem 'jquery-rails', '2.0.0'
 gem 'bootstrap-sass', '2.0.0'
 gem 'bootstrap-will_paginate', '0.0.5'
-gem 'bcrypt-ruby', '3.0.1'
-#gem 'bcrypt-ruby', :require => "bcrypt"
+#gem 'bcrypt-ruby', '3.0.1'
+gem 'bcrypt-ruby', :require => "bcrypt"
 #gem 'faker', '1.0.1'
 #gem 'will_paginate', '3.0.3'
 

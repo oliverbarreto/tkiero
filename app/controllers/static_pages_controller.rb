@@ -1,4 +1,5 @@
 class StaticPagesController < ApplicationController
+
   #Static Page of the site - HOME
   def home
   end

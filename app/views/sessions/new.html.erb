@@ -1,0 +1,40 @@
+<!-- Log In & Log Out page -->
+<% provide(:title, 'Log In') %>
+
+<div class="center hero-unit">
+	<!-- Login Form -->
+	<h2>tKiero App - Login</h2>
+	<p>
+		Please fill in the form with your credentials to login
+		<br />
+		tKiero App is one of current Build One IDeas Lab projects
+	</p><br />
+
+	<br />
+	<div class="row">
+		<div class="span6">
+			<%= form_tag sessions_path do %>
+			<p>
+				<%= label_tag :email %> 
+				<%= text_field_tag :email, params[:email], :placeholder => 'your eMail', autofocus:"true"  %>
+			</p>
+			<p>
+				<%= label_tag :password %> 
+				<%= password_field_tag :password %>
+			</p>
+			
+			<br />			
+			<p><%= submit_tag "Login...", class: "btn btn-large btn-success" %></p>
+			<% end %>
+		</div>
+		<div class="span4">
+			<img src="http://placehold.it/350x330" alt="attention catching logo goes here">
+		</div>
+	</div>
+	<br />			
+	<br />
+	<p>...ot if you don't have an account, create one here</p>
+	<%= link_to "Sign Up here", signup_path, class: "btn btn-large btn-success"  %>
+</div>
+
+

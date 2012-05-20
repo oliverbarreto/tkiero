@@ -164,7 +164,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate (~> 2.4.1.beta)
-  bcrypt-ruby (= 3.0.1)
+  bcrypt-ruby
   bootstrap-sass (= 2.0.0)
   bootstrap-will_paginate (= 0.0.5)
   capybara (= 1.1.2)
