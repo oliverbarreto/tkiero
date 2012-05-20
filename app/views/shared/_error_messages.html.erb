@@ -1,0 +1,12 @@
+<!-- Displays errors of the form, if any on -->
+<% if @user.errors.any? %>
+	<div class="alert alert-error pull-left">
+		<button class="close" data-dismiss="alert">×</button>		    		
+		<p>The form contains <%= pluralize(@user.errors.count, "error") %></p>
+		<ul>
+		    <% @user.errors.full_messages.each do |message| %>
+				<li>	<%= message %></li>
+			<% end %>
+		</ul>
+	</div>
+<% end %>

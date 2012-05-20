@@ -31,7 +31,6 @@
     		<% if flash.first %>
 			<div class="alert alert-success">
 	  			<button class="close" data-dismiss="alert">×</button>
-		    		
 		    		<!-- Displays all flash messages of the main app-->
 		    		<% flash.each do |name, msg| %>
 		    			<%= content_tag :div, msg, :id => "flash_#{name}" %>

@@ -185,10 +185,13 @@ footer {
  textarea:focus, input:focus 
 /*  input[type=text]:focus, input[type=password]:focus */
 {
-  border: 2px solid $yellow;
-  
+  border: 2px solid $yellow;  
 }
 
+.field_with_errors {
+  @extend .control-group;
+  @extend .error;
+}
 
 /* Gravatar Sidebar */
 

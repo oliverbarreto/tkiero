@@ -13,18 +13,7 @@
 
 	<%= form_for @user do |f| %>
 		<!-- Displays errors of the form, if any on -->
-		<% if @user.errors.any? %>
-			<div class="alert alert-error pull-left">
-				<button class="close" data-dismiss="alert">×</button>		    		
-				<p>You have entered invalid data on the form</p>
-				<ul>
-					<% for message in @user.errors.full_messages %>
-						<li>	<%= message %></li>
-					<% end %>
-				</ul>
-			</div>
-		<% end %>
-		
+		  <%= render 'shared/error_messages' %>
 		<br />
 		<div class="row">
   			<div class="span6">
