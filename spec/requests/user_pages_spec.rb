@@ -5,7 +5,7 @@ describe "User pages" do
   let(:base_title) { "tKiero App" }
   subject { page }
 
-  # Page Content 
+  # Sign Up - Page Content 
   describe "Signup page" do
 
     before { visit signup_path }
@@ -52,11 +52,9 @@ describe "User pages" do
         it { should have_selector('div.alert.alert-success', text: 'Welcome') }
       end
     end
-    
-    
   end
 
-  # Page Content
+  # Session User Profile - Page Content
   describe "Profile page" do
 
     # Code to make a user variable from ActiveRecord:Test:Environment with FactoryGirl gem 
