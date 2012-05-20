@@ -1,0 +1,249 @@
+  @import "bootstrap";
+
+  
+body {
+    padding-top: 60px;
+    /* padding-bottom:40px;
+    background: #049cdb; */
+    background: $infoBackground;
+}
+
+  @import "bootstrap-responsive";
+
+
+
+/* universal */
+
+html {
+  overflow-y: scroll;
+}
+
+
+section {
+  overflow: auto;
+}
+
+/* .container {
+  padding-bottom: 40px;
+}
+*/
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+  h1 {
+  margin-bottom: 10px;
+  }
+}
+
+.label.success {
+  background-color: $green;
+  
+}
+/* typography */
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.7em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: $grayLight; 
+}
+
+h4 {
+    color: $green;
+    line-height: 24px;
+    font-size: 16px;
+    padding-bottom: 10px;
+
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+
+/* header */
+
+#logo {
+  float: left;
+  margin-right: 20px;
+  font-size: 1.7em;
+  color: #fff;
+  /* text-transform: uppercase; */
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+  line-height: 1;
+  &:hover {
+    color: #00BFFF;
+    text-decoration: none;
+  }
+}
+
+/* Hero-Unit */
+.hero-unit {
+/*  background: #d9edf7; */  
+  background: $blue;
+  h1{
+    color: $white;  
+  }
+  h2{
+    color: $yellow;  
+  }
+  h3{
+    color: $white;  
+  }
+  a{
+    color: $white;  
+    &:hover{
+      color: $yellow;  
+      text-decoration: none;
+    }
+  }
+  p{
+    color: $white;  
+  }
+  label{
+    color: $white;  
+
+  }
+}
+
+/* Call To Action Row */
+
+.calltoaction {
+  h2{
+    color:$green;
+  }
+}
+
+/* footer */
+footer {
+  /*  margin-top: 45px;
+  */
+  padding-top: 30px;
+  padding-bottom: 30px;
+  border-top: 1px solid #eaeaea;
+  color: #888987;
+  background: #1B1B1B;
+  a {
+    color: $white;
+    &:hover { 
+      color: #00BFFF;
+      text-decoration: none;
+    }
+  }
+  small {
+    float: left;
+    text-align: center;
+  }
+  ul {
+    float: right;
+    list-style: none;
+    margin-right: 20px;
+    li {
+    float: left;
+    margin-left: 10px;
+    }
+  }
+  p {
+    font-size: 11px;
+    
+  }
+}
+
+
+/* Success Button */
+.btn-success {
+  color: $white;  
+  &:hover{
+    color: $yellow;  
+    text-decoration: none;
+  }
+}
+
+
+/* Forms - Para hacer que los textbox fields se iluminen as coger el foco*/
+/* input, textarea, select, .uneditable-input */
+ textarea:focus, input:focus 
+/*  input[type=text]:focus, input[type=password]:focus */
+{
+  border: 2px solid $yellow;
+  
+}
+
+
+/* Gravatar Sidebar */
+
+aside {
+  section {
+    padding: 10px 0;
+    border-top: 1px solid $grayLighter;
+    &:first-child {
+      border: 0;
+      padding-top: 0;
+    }
+    span {
+      display: block;
+      margin-bottom: 3px;
+      line-height: 1;
+    }
+    h2 {
+      font-size: 1.1em;
+      text-align: left;
+      letter-spacing: -1px;
+      margin-bottom: 3px;
+    }
+  }
+}
+
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+
+
+/* **************************************************** */
+/* mixins, variables, etc. */ 
+/*
+$grayMediumLight: #eaeaea;
+
+@mixin box_sizing {
+  -moz-box-sizing: border-box; 
+  -webkit-box-sizing: border-box; 
+  box-sizing: border-box;
+}
+*/ 
+/* **************************************************** */
+
+
+
+/* Debug footer */
+
+
+/* ROWS content 
+.row {
+  padding: 20px 0;
+  h2{
+    color:$green;
+  }
+}
+
+*/

@@ -13,3 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+//= require bootstrap
+$(document).ready(function(){
+  /* Your javascripts goes here... */
+ 	$('.carousel').carousel({
+  		interval: 4000
+	})
+});

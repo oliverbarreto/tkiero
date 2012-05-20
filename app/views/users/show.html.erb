@@ -1,0 +1,23 @@
+<!-- Show User  Page -->
+<% provide(:title, @user.name) %>
+
+<h1>tKiero App</h1>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h2>
+        <%= gravatar_for @user %>
+        <%= @user.name %> <br/ >
+		<%= @user.email %>
+      </h2>
+    </section>
+  </aside>
+</div>
+
+
+
+<br/ >
+<p class="center">
+	This is Page is part of one of the Labs ob   
+	<a href="http://www.buildoneideas.com"> Build One IDeas</a>
+</p>
