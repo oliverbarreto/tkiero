@@ -23,11 +23,15 @@ describe User do
   
   subject { @user }
   
+  # The Model should respond to the following fields
   it { should respond_to(:name) }
   it { should respond_to(:email) }
   it { should respond_to(:password_salt) } 
   it { should respond_to(:password_hash) }
+  it { should respond_to(:remember_token) }
   it { should be_valid }
+  
+  
     
   #  Test invalid cases: no name
   describe "when name is not present" do
@@ -131,6 +135,11 @@ describe User do
       it { should_not == user_for_invalid_password }
       specify { user_for_invalid_password.should be_false }
     end
+  end
+
+  describe "" do
+    
+    
   end
 
 end
