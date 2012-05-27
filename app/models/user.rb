@@ -23,7 +23,8 @@ class User < ActiveRecord::Base
     before_save :encrypt_password
     
     # Downloadcase before save email to avoid possible eMail duplication issues   
-    before_save { |user| user.email = email.downcase }
+    # before_save { |user| user.email = email.downcase }
+     before_create :downcase_eMail
 
     
     #Validation policy for users: name, password and eMail
@@ -44,6 +45,13 @@ class User < ActiveRecord::Base
                       format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
                       #uniqueness: true
                       uniqueness: { case_sensitive: false }
+  
+    # Method to download case of eMail before create model method 
+    #private
+    def downcase_eMail
+      self.email.downcase!
+    end
+    
   
     # Method to Authenticate users on controller 
     def self.authenticate(email, password)

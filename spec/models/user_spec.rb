@@ -15,7 +15,7 @@ require 'spec_helper'
 
 describe User do
 
-  #Creates a stud user model for testing purposes
+  # Creates a stud user model for testing purposes
   before do
     #We need a valid: name, eMail and a password to create hash and salt on create action 
     @user = User.new(name: "User", email: "user@example.com", password: "12121212", password_confirmation: "12121212") 
@@ -29,7 +29,7 @@ describe User do
   it { should respond_to(:password_hash) }
   it { should be_valid }
     
-  #Test invalid cases: no name
+  #  Test invalid cases: no name
   describe "when name is not present" do
     before { @user.name = " " }
     it { should_not be_valid }
@@ -41,7 +41,7 @@ describe User do
     it { should_not be_valid }
   end
   
-  #Test invalid cases: eMail format
+  # Test invalid cases: eMail format
   describe "when email format is invalid" do
     it "should be invalid" do
       addresses = %w[user@foo,com user_at_foo.org example.user@foo.]
@@ -83,7 +83,7 @@ describe User do
     it { should_not be_valid }
   end
   
-  #Password
+  # Password
   describe "when password is not present" do
     before { @user.password = @user.password_confirmation = " " }
     it { should_not be_valid }
@@ -115,13 +115,13 @@ describe User do
     let(:found_user) { User.authenticate(@user.email, @user.password) }
     #user = User.authenticate(params[:email], params[:password])
 
-    #Case of Valid Password
+    # Case of Valid Password
     describe "with valid password" do
       #it { should == found_user.authenticate(@user.email, @user.password) }
       it { should be_valid }
     end
 
-    #Case of Invalid Password
+    # Case of Invalid Password
     describe "with invalid password" do
       # Creates a duplicate of our stud :found_user test variable to verify that test fails because it gets the same user
       # In our User.authenticate method we return "nil" for not valid users
