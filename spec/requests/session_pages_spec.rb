@@ -5,7 +5,7 @@ describe "SessionPages" do
   let(:base_title) { "tKiero App" }
   subject { page }
 
-  #Log In Page
+  # Log In Page
   describe "Log In page" do
 
     before { visit login_path }
@@ -18,7 +18,7 @@ describe "SessionPages" do
       it { should have_selector 'title', text: '| Log In' }
     end
     
-    #Test Log-In with Invalid Information
+    # Test Log-In with Invalid Information
     describe "with invalid information" do
       before { click_button "Login..." }
 
@@ -34,7 +34,7 @@ describe "SessionPages" do
       end
     end
   
-    #Test Log-In with Valid Information
+    # Test Log-In with Valid Information
     describe "with Valid Information" do
       let(:user) { FactoryGirl.create(:user) }
       
