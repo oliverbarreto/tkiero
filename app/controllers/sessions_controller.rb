@@ -5,7 +5,9 @@ class SessionsController < ApplicationController
   def create
     user = User.authenticate(params[:email], params[:password])
     if user
+      #Sign-In Function
       session[:user_id] = user.id
+      
       # Redirect to the root page
       #redirect_to root_url, :notice => "Logged In, Welcome to tKiero App !!!"
       
