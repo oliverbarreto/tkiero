@@ -24,8 +24,12 @@ class SessionsController < ApplicationController
   end
   
   def destroy
-    session[:user_id] = nil
+    sign_out
     redirect_to root_url, :notice => "Logged Out !!!"
+    
+    #RAILS CASTS 250
+    #session[:user_id] = nil
+    #redirect_to root_url, :notice => "Logged Out !!!"
   end
   
 end

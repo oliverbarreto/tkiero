@@ -47,6 +47,12 @@ describe "SessionPages" do
       it { should have_link('Log Out', href: logout_path) }
       it { should_not have_link('Log In...', href: login_path) }
 
+      describe "followed by signout" do
+        before { click_link "Log Out" }
+        it { should have_link('Log In') }
+      end
+      
+      
       #TODO: Page should have the name of the user
       # it { should have_selector('title', text: user.name) }
       #TODO: Create a profile link on the  
