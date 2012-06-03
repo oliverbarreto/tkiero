@@ -6,13 +6,17 @@ class SessionsController < ApplicationController
     user = User.authenticate(params[:email], params[:password])
     if user
       #Sign-In Function
-      session[:user_id] = user.id
+      sign_in user
+
+      # Redirects to the user Wall page page when loged in
+      redirect_to user, :notice => "Logged In, Welcome to tKiero App !!!"
       
-      # Redirect to the root page
+      #RAILS CASTS 250
+      #session[:user_id] = user.id
+      
+      # Redirects to the root page
       #redirect_to root_url, :notice => "Logged In, Welcome to tKiero App !!!"
       
-      # Redirect to the user Wall page page when loged in
-      redirect_to user, :notice => "Logged In, Welcome to tKiero App !!!"
     else
       flash.now.alert = "Invalid eMail or Password"
       render "new"

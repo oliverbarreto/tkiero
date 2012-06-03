@@ -23,10 +23,11 @@ class User < ActiveRecord::Base
     
     #Calls encrypt_password method to encrypt before saving the user model    
     before_save :encrypt_password
-    
+    before_save :create_remember_token
+
     # Downloadcase before save email to avoid possible eMail duplication issues   
     # before_save { |user| user.email = email.downcase }
-     before_create :downcase_eMail
+    before_create :downcase_eMail
 
     
     #Validation policy for users: name, password and eMail
@@ -49,7 +50,6 @@ class User < ActiveRecord::Base
                       uniqueness: { case_sensitive: false }
   
     # Creates a remember_token for cookie validation
-    before_save :create_remember_token
 
     # Method to download case of eMail before create model method 
     #private
