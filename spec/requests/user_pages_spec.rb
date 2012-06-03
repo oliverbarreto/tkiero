@@ -69,4 +69,27 @@ describe "User pages" do
     it { should have_selector 'title', text: "| #{user.name}" }
   end
 
+  # Test Edit Users Form
+  describe "edit" do
+    
+    let(:user) { FactoryGirl.create(:user) }
+    before { visit edit_user_path(user) }
+
+    describe "page" do
+      it { should have_selector('h1',    text: "Update Your User Profile Setting") }
+      it { should have_selector('title', text: "Edit User") }
+      it { should have_link('change', href: 'http://gravatar.com/emails') }
+    end
+
+    # Test for Invalid Information 
+    describe "with invalid information" do
+      before { click_button "Save changes" }
+
+      it { should have_content('error') }
+    end
+
+    # Test for Valid Information 
+
+  end
+
 end

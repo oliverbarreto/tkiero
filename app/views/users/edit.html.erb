@@ -1,0 +1,47 @@
+<!-- Sign Up page -->
+<% provide(:title, 'Edit User') %>
+
+
+<div class="center hero-unit">
+	<!-- Sign Up Form -->
+	<h2>tKiero App - Update Your User Profile Settings</h2>
+	<p>
+		Change your account details
+	</p><br />
+
+	<%= form_for @user do |f| %>
+		<!-- Displays errors of the form, if any on -->
+		  <%= render 'shared/error_messages' %>
+		<br />
+		<div class="row">
+  			<div class="span6">
+				<p>
+					<%= f.label :name %>
+					<%= f.text_field :name, :placeholder => "name", autofocus:"true" %>
+				</p>
+				<p>
+					<%= f.label :email %>
+					<%= f.text_field :email, :placeholder => "eMail"  %>
+				</p>
+				<p>
+					<%= f.label :password %>
+					<%= f.password_field :password, :placeholder =>'password' %>
+				</p>
+				<p>
+					<%= f.label :password_confirmation %>
+					<%= f.password_field :password_confirmation, :placeholder =>'confirm password'%>
+				</p>
+				<br />
+				<p><%= f.submit "Save Changes...", class:"btn btn-large btn-success" %></p>
+			</div>
+			<div class="span3">
+    				<a href="http://gravatar.com/emails">Change your Gravatar Image</a>
+				<%= gravatar_for @user %>
+			</div>
+		</div>
+	<% end %>
+	<br />			
+	<p>...ot if you already have an account, login here</p>
+	<%= link_to "Log In here", login_path, class: "btn btn-large btn-success" %>
+
+</div>
