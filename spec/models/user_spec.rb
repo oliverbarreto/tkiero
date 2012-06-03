@@ -2,13 +2,15 @@
 #
 # Table name: users
 #
-#  id            :integer         not null, primary key
-#  name          :string(255)
-#  email         :string(255)
-#  password_hash :string(255)
-#  password_salt :string(255)
-#  created_at    :datetime        not null
-#  updated_at    :datetime        not null
+#  id             :integer         not null, primary key
+#  name           :string(255)
+#  email          :string(255)
+#  password_hash  :string(255)
+#  password_salt  :string(255)
+#  created_at     :datetime        not null
+#  updated_at     :datetime        not null
+#  auth_token     :string(255)
+#  remember_token :string(255)
 #
 
 require 'spec_helper'
@@ -18,7 +20,8 @@ describe User do
   # Creates a stud user model for testing purposes
   before do
     #We need a valid: name, eMail and a password to create hash and salt on create action 
-    @user = User.new(name: "User", email: "user@example.com", password: "12121212", password_confirmation: "12121212") 
+    @user = User.new(name: "User", email: "user@example.com", 
+            password: "12121212", password_confirmation: "12121212") 
   end
   
   subject { @user }
@@ -29,6 +32,7 @@ describe User do
   it { should respond_to(:password_salt) } 
   it { should respond_to(:password_hash) }
   it { should respond_to(:remember_token) }
+  #it { should respond_to(:authenticate) }  
   it { should be_valid }
   
   
@@ -68,7 +72,7 @@ describe User do
   end
   
   #Test eMail Uniqueness
-    describe "when email address is already taken" do
+  describe "when email address is already taken" do
     before do
       user_with_same_email = @user.dup
       user_with_same_email.save
@@ -137,9 +141,11 @@ describe User do
     end
   end
 
-  describe "" do
-    
-    
+  # Validate for non-blank remember_token field for users 
+  describe "remember token" do
+    before { @user.save }
+    #it { @user.remember_token.should_not be_blank }
+    its(:remember_token) { should_not be_blank }
   end
 
 end

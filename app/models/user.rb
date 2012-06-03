@@ -2,13 +2,15 @@
 #
 # Table name: users
 #
-#  id            :integer         not null, primary key
-#  name          :string(255)
-#  email         :string(255)
-#  password_hash :string(255)
-#  password_salt :string(255)
-#  created_at    :datetime        not null
-#  updated_at    :datetime        not null
+#  id             :integer         not null, primary key
+#  name           :string(255)
+#  email          :string(255)
+#  password_hash  :string(255)
+#  password_salt  :string(255)
+#  created_at     :datetime        not null
+#  updated_at     :datetime        not null
+#  auth_token     :string(255)
+#  remember_token :string(255)
 #
 
 class User < ActiveRecord::Base
@@ -21,10 +23,11 @@ class User < ActiveRecord::Base
     
     #Calls encrypt_password method to encrypt before saving the user model    
     before_save :encrypt_password
-    
+    before_save :create_remember_token
+
     # Downloadcase before save email to avoid possible eMail duplication issues   
     # before_save { |user| user.email = email.downcase }
-     before_create :downcase_eMail
+    before_create :downcase_eMail
 
     
     #Validation policy for users: name, password and eMail
@@ -46,6 +49,8 @@ class User < ActiveRecord::Base
                       #uniqueness: true
                       uniqueness: { case_sensitive: false }
   
+    # Creates a remember_token for cookie validation
+
     # Method to download case of eMail before create model method 
     #private
     def downcase_eMail
@@ -70,4 +75,12 @@ class User < ActiveRecord::Base
         self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
       end
     end
+    
+    private
+    
+      def create_remember_token
+        self.remember_token = SecureRandom.urlsafe_base64
+      end
+      
+    
 end
