@@ -14,11 +14,7 @@
             <ul class="nav pull-right">
               <li class="active">
 				<a href="<%= root_path %>"><i class="icon-home icon-white"></i> Home</a>
-              </li>
-              <li><%= link_to "About Us", about_path %></li>
-			  <li><%= link_to "Contact", contact_path %></li>
-              <li><%= link_to "Help", help_path %></li>
-              
+              </li>              
               <% if signed_in? %>
 	            <li><%= link_to "Users", '#' %></li>
 	            <li id="fat-menu" class="dropdown">
@@ -28,6 +24,7 @@
 	              <ul class="dropdown-menu">
 	                <li><%= link_to "My Wall", current_user %></li>
 	                <li><%= link_to "My Settings", '#' %></li>
+		            <li><%= link_to "Help", help_path %></li>
 	                <li class="divider"></li>
 	                <li>
 	                  <%= link_to "Log Out", logout_path %>
