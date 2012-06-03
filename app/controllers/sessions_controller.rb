@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       # Redirect to the root page
       #redirect_to root_url, :notice => "Logged In, Welcome to tKiero App !!!"
       
-      # Redirect to the user profile page when loged in
+      # Redirect to the user Wall page page when loged in
       redirect_to user, :notice => "Logged In, Welcome to tKiero App !!!"
     else
       flash.now.alert = "Invalid eMail or Password"
