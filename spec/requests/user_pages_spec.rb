@@ -9,7 +9,7 @@ describe "User pages" do
   describe "Signup page" do
 
     before { visit signup_path }
-    let(:submit) { "Create your account..." }
+    let(:submit) { "Create your Account" }
   
     describe "Singup page correct content" do
       it { should have_content('Build One IDeas') }
@@ -55,8 +55,8 @@ describe "User pages" do
     end
   end
 
-  # Session User Profile - Page Content
-  describe "Profile page" do
+  # User Wall Page Content
+  describe "User Wall Page" do
 
     # Code to make a user variable from ActiveRecord:Test:Environment with FactoryGirl gem 
     let(:user) { FactoryGirl.create(:user) }
@@ -69,27 +69,50 @@ describe "User pages" do
     it { should have_selector 'title', text: "| #{user.name}" }
   end
 
-  # Test Edit Users Form
-  describe "edit" do
+
+  # Test Edit Users Form - My Settings User Profile 
+  describe "edit - My Settings User Profile" do
     
     let(:user) { FactoryGirl.create(:user) }
     before { visit edit_user_path(user) }
 
     describe "page" do
-      it { should have_selector('h1',    text: "Update Your User Profile Setting") }
-      it { should have_selector('title', text: "Edit User") }
-      it { should have_link('change', href: 'http://gravatar.com/emails') }
+      it { should have_selector('h2', text: 'tKiero App - Update Your User Profile Settings') }
+      it { should have_selector('title', text: 'Edit User') }
+      it { should have_selector('label', text: 'Email') }
+      it { should have_selector('label', text: 'Password') }
+      it { should have_selector('label', text: 'Password confirmation') }
+      it { should have_link('Change your Gravatar Image', href: 'http://gravatar.com/emails') }
     end
 
     # Test for Invalid Information 
     describe "with invalid information" do
-      before { click_button "Save changes" }
-
+      before { click_button 'Save Changes' }
       it { should have_content('error') }
     end
 
-    # Test for Valid Information 
 
+    # Test for Valid Information 
+    describe "with valid information" do
+      let(:new_name)  { "New Name" }
+      let(:new_email) { "new@example.com" }
+    
+      before do
+        fill_in 'Name',             with: new_name
+        fill_in 'Email',            with: new_email
+        fill_in 'Password',         with: user.password
+        fill_in 'Password confirmation', with: user.password
+        click_button 'Save Changes'
+      end
+
+      it { should have_selector('title', text: new_name) }
+      it { should have_selector('div.alert.alert-success') }
+      it { should have_link('Log Out', href: logout_path) }
+      specify { user.reload.name.should  == new_name }
+      specify { user.reload.email.should == new_email }
+    end
+
+    
   end
 
 end
