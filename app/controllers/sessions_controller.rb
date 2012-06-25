@@ -9,8 +9,9 @@ class SessionsController < ApplicationController
       sign_in user
 
       # Redirects to the user Wall page page when loged in
-      redirect_to user, :notice => "Logged In, Welcome to tKiero App !!!"
-      
+      #redirect_to user, :notice => "Logged In, Welcome to tKiero App !!!"
+      redirect_to user
+            
       #RAILS CASTS 250
       #session[:user_id] = user.id
       
@@ -25,11 +26,13 @@ class SessionsController < ApplicationController
   
   def destroy
     sign_out
-    redirect_to root_url, :notice => "Logged Out !!!"
+    #redirect_to root_url, :notice => "Logged Out !!!"
+    redirect_to root_url
     
     #RAILS CASTS 250
     #session[:user_id] = nil
     #redirect_to root_url, :notice => "Logged Out !!!"
   end
+  
   
 end

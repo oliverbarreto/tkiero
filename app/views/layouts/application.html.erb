@@ -15,18 +15,6 @@
   <body>
     <%= render 'layouts/header' %>    
     <div class="container">
-    		<!-- RAILS CASTS 250 --> 
-    		<!-- Checks if there is an user loged in and displays his info -->
-    		<div id="user_nav">
-    			<% if current_user %>
-    				Logged in as <%= current_user.email %>
-    				<%= link_to "Log Out", logout_path %> 
-    			<% else %>
-    				<%= link_to "Sign Up", signup_path %> 
-    				or
-    				<%= link_to "Log In", login_path %> 
-    			<% end %>
-    		</div> 
     	
     		<!-- Div for Flash Messages-->    		
     		<% if flash.first %>

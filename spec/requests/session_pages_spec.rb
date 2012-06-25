@@ -10,6 +10,7 @@ describe "SessionPages" do
 
     before { visit login_path }
 
+
     # Test basic Page Content
     describe "Right Content in Login Page" do
       it { should have_content('Build One IDeas') }
@@ -20,7 +21,7 @@ describe "SessionPages" do
     
     # Test Log-In with Invalid Information
     describe "with invalid information" do
-      before { click_button "Login..." }
+      before { click_button "Log In" }
 
       it { should have_selector('title', text: 'Log In') }
       it { should have_selector('div.alert', text: 'Invalid eMail or Password') }
@@ -37,26 +38,30 @@ describe "SessionPages" do
     # Test Log-In with Valid Information
     describe "with Valid Information" do
       let(:user) { FactoryGirl.create(:user) }
-      
+      #before { sign_in user }
+
       before do
-        fill_in "Email",    with: user.email
-        fill_in "Password", with: user.password
-        click_button "Login..."
+        fill_in "email",    with: user.email
+        fill_in "password", with: user.password
+        click_button "Log In"
       end
 
       it { should have_link('Log Out', href: logout_path) }
-      it { should_not have_link('Log In...', href: login_path) }
+      it { should_not have_link('Log In', href: login_path) }
 
       describe "followed by signout" do
         before { click_link "Log Out" }
         it { should have_link('Log In') }
       end
       
-      
       #TODO: Page should have the name of the user
-      # it { should have_selector('title', text: user.name) }
-      #TODO: Create a profile link on the  
-      # it { should have_link('Profile', href: user_path(user)) }
+      it { should have_selector('title', text: user.name) }
+      #TODO: Links on the profile drop-down button link on the Nav-Bar Menu  
+      it { should have_link('My Wall', href: user_path(user)) }
+      it { should have_link('My Settings', href: edit_user_path(user)) }
+      it { should have_link('Help', href: help_path) }
+      it { should have_link('Log Out', href: logout_path) }
+      
     end
   end
 end
