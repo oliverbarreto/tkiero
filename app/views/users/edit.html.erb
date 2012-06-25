@@ -1,14 +1,12 @@
 <!-- Sign Up page -->
-<% provide(:title, 'Sign Up') %>
+<% provide(:title, 'Edit User') %>
 
 
 <div class="center hero-unit">
 	<!-- Sign Up Form -->
-	<h2>tKiero App - Sign Up</h2>
+	<h2>tKiero App - Update Your User Profile Settings</h2>
 	<p>
-		Please fill in the form with to create a new account for tKiero App
-		<br />
-		tKiero App is one of current Build One IDeas Lab projects
+		Change your account details
 	</p><br />
 
 	<%= form_for @user do |f| %>
@@ -34,10 +32,11 @@
 					<%= f.password_field :password_confirmation, :placeholder =>'confirm password'%>
 				</p>
 				<br />
-				<p><%= f.submit "Create your Account", class:"btn btn-large btn-success" %></p>
+				<p><%= f.submit "Save Changes", class:"btn btn-large btn-success" %></p>
 			</div>
-			<div class="span4">
-				<img src="http://placehold.it/350x330" alt="attention catching logo goes here">
+			<div class="span3">
+    				<a href="http://gravatar.com/emails">Change your Gravatar Image</a>
+				<%= gravatar_for @user %>
 			</div>
 		</div>
 	<% end %>
@@ -46,4 +45,3 @@
 	<%= link_to "Log In here", login_path, class: "btn btn-large btn-success" %>
 
 </div>
-    

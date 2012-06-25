@@ -8,6 +8,7 @@ Tkiero::Application.routes.draw do
   #User Login & Logout Controller  
   get "login" => "sessions#new", :as => "login"
   get "logout" => "sessions#destroy", :as => "logout"
+  #get "logout" => "sessions#destroy", :as => "logout", via: :delete
   resources :sessions, only: [:new, :create, :destroy]
 
   # Routes made for Static Pages of the App with URI Changed to be more specific without 'static_pages'

@@ -14,20 +14,30 @@
             <ul class="nav pull-right">
               <li class="active">
 				<a href="<%= root_path %>"><i class="icon-home icon-white"></i> Home</a>
-              </li>
-              <li><%= link_to "About Us", about_path %></li>
-			  <li><%= link_to "Contact", contact_path %></li>
-              <li><%= link_to "Help", help_path %></li>
-              
+              </li>              
               <% if signed_in? %>
-	            <li><%= link_to "Users", '#' %></li>
+	            <li> <%= link_to "Users", '#' %> </li>
 	            <li id="fat-menu" class="dropdown">
 	              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-	                Account <b class="caret"></b>
+	                <!-- Account -->
+	                <% if @user %> 
+	                		<i> <%= gravatar_for @user %> </i>
+	                	<% else %>
+	                		Account 
+	                	<% end %>
+	                <b class="caret"></b> 
 	              </a>
 	              <ul class="dropdown-menu">
+	                <% if @user %> 
+						<li>
+							<b> <%= @user.name %>  </b><br/ >
+							<%= @user.email %>
+						</li>
+	                	<% end %>
+					<li class="divider"></li>
 	                <li><%= link_to "My Wall", current_user %></li>
-	                <li><%= link_to "My Settings", '#' %></li>
+	                <li><%= link_to "My Settings", edit_user_path(current_user) %></li>
+		            <li><%= link_to "Help", help_path %></li>
 	                <li class="divider"></li>
 	                <li>
 	                  <%= link_to "Log Out", logout_path %>
